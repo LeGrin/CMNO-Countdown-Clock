@@ -50,6 +50,12 @@ for (var i = 0; i < setterBtns.length; i++) {
             case 'seconds-minus':
                 changeWholeTime(-1);
                 break;
+            case 'five-minutes':
+                  changeWholeTime(5*60);
+                  break;
+            case 'ten-minutes':
+                    changeWholeTime(10*60);
+                    break;
         }
       displayTimeLeft(wholeTime);
     });
