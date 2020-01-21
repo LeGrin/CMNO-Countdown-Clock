@@ -19,6 +19,7 @@ const setterBtns = document.querySelectorAll('button[data-setter]');
 
 let intervalTimer;
 let timeLeft;
+let remainTime;
 let wholeTime = 5 * 60; // manage this to set the whole time 
 let isPaused = false;
 let isStarted = false;
@@ -52,11 +53,11 @@ for (var i = 0; i < setterBtns.length; i++) {
                 break;
             case 'five-minutes':
               changeWholeTime(5*60);
-              timeLeft += 5*60;
+              remainTime += 5*60;
               break;
             case 'ten-minutes':
               changeWholeTime(10*60);
-              timeLeft += 10*60;
+              remainTime += 10*60;
               break;
             case 'reset':
               pauseTimer();
@@ -69,7 +70,7 @@ for (var i = 0; i < setterBtns.length; i++) {
 }
 
 function timer (seconds){ //counts time, takes seconds
-  let remainTime = Date.now() + (seconds * 1000);
+  remainTime = Date.now() + (seconds * 1000);
   displayTimeLeft(seconds);
   
   intervalTimer = setInterval(function(){
@@ -93,17 +94,17 @@ function pauseTimer(event){
   if(isStarted === false){
     timer(wholeTime);
     isStarted = true;
-    this.classList.remove('play');
-    this.classList.add('pause');
+    pauseBtn.classList.remove('pause');
+    pauseBtn.classList.add('play');
 
   }else if(isPaused){
-    this.classList.remove('play');
-    this.classList.add('pause');
+    pauseBtn.classList.remove('play');
+    pauseBtn.classList.add('pause');
     timer(timeLeft);
     isPaused = isPaused ? false : true
   }else{
-    this.classList.remove('pause');
-    this.classList.add('play');
+    pauseBtn.classList.remove('pause');
+    pauseBtn.classList.add('play');
     clearInterval(intervalTimer);
     isPaused = isPaused ? false : true ;
   }
