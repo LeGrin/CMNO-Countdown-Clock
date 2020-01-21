@@ -52,11 +52,14 @@ for (var i = 0; i < setterBtns.length; i++) {
                 break;
             case 'five-minutes':
               changeWholeTime(5*60);
+              timeLeft += 5*60;
               break;
             case 'ten-minutes':
               changeWholeTime(10*60);
+              timeLeft += 10*60;
               break;
             case 'reset':
+              pauseTimer();
               wholeTime = 5*60;
               update(wholeTime,wholeTime);
               break;
