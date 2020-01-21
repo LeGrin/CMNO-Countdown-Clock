@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
 
+.logo {
+    right: 45%;
+    top: 0;
+    position: absolute;
+}
+
+.button_holder {
+  display: flex;
+}
+
 .bottom_button {
   cursor: pointer;
   font-family: 'Roboto';

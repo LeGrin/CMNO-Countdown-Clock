@@ -19,7 +19,7 @@ const setterBtns = document.querySelectorAll('button[data-setter]');
 
 let intervalTimer;
 let timeLeft;
-let wholeTime = 0.5 * 60; // manage this to set the whole time 
+let wholeTime = 5 * 60; // manage this to set the whole time 
 let isPaused = false;
 let isStarted = false;
 
@@ -51,11 +51,15 @@ for (var i = 0; i < setterBtns.length; i++) {
                 changeWholeTime(-1);
                 break;
             case 'five-minutes':
-                  changeWholeTime(5*60);
-                  break;
+              changeWholeTime(5*60);
+              break;
             case 'ten-minutes':
-                    changeWholeTime(10*60);
-                    break;
+              changeWholeTime(10*60);
+              break;
+            case 'reset':
+              wholeTime = 5*60;
+              update(wholeTime,wholeTime);
+              break;
         }
       displayTimeLeft(wholeTime);
     });
