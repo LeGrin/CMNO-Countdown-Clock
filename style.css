@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
 
 .logo {
-    right: 45%;
+    right: 43%;
     top: 0;
     position: absolute;
 }
@@ -19,7 +19,12 @@
   width: 100%;
   border: 1px solid;
   border-color: #F7958E;
-  border-radius: 2px;
+  border-radius: 15px;
+  margin: 3px
+}
+
+.reset {
+  background-color: #F7968E;
 }
 
 button[data-setter]:hover { opacity: 0.5; }
