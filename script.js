@@ -92,11 +92,6 @@ function pauseTimer(event){
     isStarted = true;
     this.classList.remove('play');
     this.classList.add('pause');
-    
-    setterBtns.forEach(function(btn){
-      btn.disabled = true;
-      btn.style.opacity = 0.5;
-    });
 
   }else if(isPaused){
     this.classList.remove('play');
