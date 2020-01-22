@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
 
 .logo {
-    right: 43%;
-    top: 0;
-    position: absolute;
+    display: block;
+    margin: 0 auto;
 }
 
 .button_holder {
@@ -31,7 +30,7 @@ button[data-setter]:hover { opacity: 0.5; }
 
 .container {
   position: relative;
-  top: 30px;
+  top: 160px;
   width: 300px;
   margin: 0 auto;
 }
