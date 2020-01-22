@@ -58,7 +58,7 @@ button[data-setter]:hover { opacity: 0.5; }
 
 .display-remain-time {
   font-family: 'Roboto';
-  font-weight: 100;
+  font-weight: 400;
   font-size: 65px;
   color: #F7958E;
 }
