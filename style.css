@@ -3,6 +3,8 @@
 .logo {
     display: block;
     margin: 0 auto;
+    width: 20%;
+    padding-left: 19px;
 }
 
 .button_holder {
@@ -30,8 +32,8 @@ button[data-setter]:hover { opacity: 0.5; }
 
 .container {
   position: relative;
-  top: 160px;
-  width: 300px;
+  top: 10px;
+  width: 450px;
   margin: 0 auto;
 }
 
@@ -50,15 +52,15 @@ button[data-setter]:hover { opacity: 0.5; }
 
 .controlls {
   position: absolute;
-  left: 75px;
-  top: 105px;
+  left: 100px;
+  top: 145px;
   text-align: center;
 }
 
 .display-remain-time {
   font-family: 'Roboto';
-  font-weight: 400;
-  font-size: 65px;
+  font-weight: 600;
+  font-size: 100px;
   color: #F7958E;
 }
 
