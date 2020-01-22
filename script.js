@@ -20,13 +20,23 @@ const setterBtns = document.querySelectorAll('button[data-setter]');
 let intervalTimer;
 let timeLeft;
 let remainTime;
-let wholeTime = 5 * 60; // manage this to set the whole time 
+let wholeTime = 1 * 10; // manage this to set the whole time 
 let isPaused = false;
 let isStarted = false;
-
+let sound = {};
 
 update(wholeTime,wholeTime); //refreshes progress bar
 displayTimeLeft(wholeTime);
+
+function playSound(src) {
+  sound = document.createElement("audio");
+  sound.src = src;
+  sound.setAttribute("preload", "auto");
+  sound.setAttribute("controls", "none");
+  sound.style.display = "none";
+  document.body.appendChild(sound);
+  sound.play();
+}
 
 function changeWholeTime(seconds){
   if ((wholeTime + seconds) > 0){
@@ -52,14 +62,17 @@ for (var i = 0; i < setterBtns.length; i++) {
                 changeWholeTime(-1);
                 break;
             case 'five-minutes':
+              sound.pause();
               changeWholeTime(5*60);
               remainTime += 5*60*1000;
               break;
             case 'ten-minutes':
+              sound.pause();
               changeWholeTime(10*60);
               remainTime += 10*60*1000;
               break;
             case 'reset':
+              sound.pause();
               pauseTimer();
               wholeTime = 5*60;
               timeLeft = wholeTime;
@@ -76,6 +89,10 @@ function timer (seconds){ //counts time, takes seconds
   
   intervalTimer = setInterval(function(){
     timeLeft = Math.round((remainTime - Date.now()) / 1000);
+    if (timeLeft === 8)
+    {
+      playSound('timesup.wav');
+    }
     if(timeLeft < 0){
       clearInterval(intervalTimer);
       isStarted = false;
@@ -111,7 +128,7 @@ function pauseTimer(event){
   }
 }
 
-function displayTimeLeft (timeLeft){ //displays time on the input
+function displayTimeLeft (timeLeft) { //displays time on the input
   let minutes = Math.floor(timeLeft / 60);
   let seconds = timeLeft % 60;
   let displayString = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
