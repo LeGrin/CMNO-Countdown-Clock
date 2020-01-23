@@ -6,7 +6,16 @@
     <body>
         <div class="container">
             <span class="text">Press the button when you feel that speaker drifted from topic.</span>
-            <a href="#" class="myButton">OUT OF TOPIC</a>
+            <a href="#" class="myButton" onclick="schedule()">OUT OF TOPIC</a>
         </div>
     </body>
+    <script>
+        {
+            function schedule() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", 'http://68.183.76.12/countdown/ping', true);
+                xhr.send();
+            }
+        }
+    </script>
 </html>

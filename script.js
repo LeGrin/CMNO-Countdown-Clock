@@ -18,6 +18,7 @@ const pauseBtn = document.getElementById('pause');
 const setterBtns = document.querySelectorAll('button[data-setter]');
 
 let intervalTimer;
+let alarmTimer;
 let timeLeft;
 let remainTime;
 let wholeTime = 1 * 10; // manage this to set the whole time 
@@ -27,15 +28,35 @@ let sound = {};
 
 update(wholeTime,wholeTime); //refreshes progress bar
 displayTimeLeft(wholeTime);
+initAlarm();
+playSound('');
+
+function initAlarm() {
+  alarmTimer = setInterval(function() {
+    if (isStarted) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", 'http://68.183.76.12/countdown/pong', true);
+      xhr.onload = function() {
+        if (xhr.status && xhr.response == 'true') {
+          playSound('timesup.wav');
+          sound.play();
+        }
+      };
+      xhr.send();
+    }
+  }, 5000)
+}
 
 function playSound(src) {
-  sound = document.createElement("audio");
+  sound = document.querySelector("audio");
+  if (!sound) {
+    sound = document.createElement("audio");
+  }
   sound.src = src;
   sound.setAttribute("preload", "auto");
   sound.setAttribute("controls", "none");
   sound.style.display = "none";
   document.body.appendChild(sound);
-  sound.play();
 }
 
 function changeWholeTime(seconds){
@@ -92,6 +113,7 @@ function timer (seconds){ //counts time, takes seconds
     if (timeLeft === 8)
     {
       playSound('timesup.wav');
+      sound.play();
     }
     if(timeLeft < 0){
       clearInterval(intervalTimer);
@@ -119,11 +141,13 @@ function pauseTimer(event){
     pauseBtn.classList.remove('play');
     pauseBtn.classList.add('pause');
     timer(timeLeft);
+    sound.pause();
     isPaused = isPaused ? false : true
   }else{
     pauseBtn.classList.remove('pause');
     pauseBtn.classList.add('play');
     clearInterval(intervalTimer);
+    sound.pause();
     isPaused = isPaused ? false : true ;
   }
 }
