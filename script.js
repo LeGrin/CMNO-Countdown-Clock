@@ -36,6 +36,7 @@ function initAlarm() {
     if (isStarted) {
       var xhr = new XMLHttpRequest();
       xhr.open("GET", 'http://68.183.76.12/countdown/pong', true);
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       xhr.onload = function() {
         if (xhr.status && xhr.response == 'true') {
           playSound('alarm.wav');
