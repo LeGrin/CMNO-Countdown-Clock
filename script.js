@@ -43,7 +43,7 @@ function initAlarm() {
         }
       };
       xhr.send();
-  }, 5000)
+  }, 8000)
 }
 
 function playSound(src) {
