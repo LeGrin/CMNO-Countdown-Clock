@@ -35,7 +35,7 @@ function initAlarm() {
   alarmTimer = setInterval(function() {
     if (isStarted) {
       var xhr = new XMLHttpRequest();
-      xhr.open("GET", 'https://68.183.76.12/countdown/pong', true);
+      xhr.open("GET", 'http://68.183.76.12/countdown/pong', true);
       xhr.onload = function() {
         if (xhr.status && xhr.response == 'true') {
           playSound('alarm.wav');
@@ -130,6 +130,7 @@ function timer (seconds){ //counts time, takes seconds
     displayTimeLeft(timeLeft);
   }, 1000);
 }
+
 function pauseTimer(event){
   if(isStarted === false){
     timer(wholeTime);
@@ -138,8 +139,8 @@ function pauseTimer(event){
     pauseBtn.classList.add('play');
 
   }else if(isPaused){
-    pauseBtn.classList.remove('play');
-    pauseBtn.classList.add('pause');
+    pauseBtn.classList.remove('pause');
+    pauseBtn.classList.add('play');
     timer(timeLeft);
     sound.pause();
     isPaused = isPaused ? false : true
