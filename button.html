@@ -1,6 +1,5 @@
 <!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <html>
     <link href="button-styles.css" rel="stylesheet" type="text/css">
 
@@ -14,7 +13,7 @@
         {
             function schedule() {
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", 'http://68.183.76.12/countdown/ping', true);
+                xhr.open("POST", 'https://68.183.76.12/countdown/ping', true);
                 xhr.send();
             }
         }
