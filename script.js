@@ -21,7 +21,7 @@ let intervalTimer;
 let alarmTimer;
 let timeLeft;
 let remainTime;
-let wholeTime = 1 * 10; // manage this to set the whole time 
+let wholeTime = 5 * 60; // manage this to set the whole time 
 let isPaused = false;
 let isStarted = false;
 let sound = {};
@@ -33,18 +33,18 @@ playSound('');
 
 function initAlarm() {
   alarmTimer = setInterval(function() {
-    if (isStarted) {
+    
       var xhr = new XMLHttpRequest();
       xhr.open("GET", 'https://68.183.76.12/countdown/pong', true);
+      xhr.setRequestHeader('Pragma', 'no-cache');
       xhr.onload = function() {
-        if (xhr.status && xhr.response == 'true') {
+        if (xhr.status && xhr.response == 'true' && isStarted && !isPaused) {
           playSound('alarm.wav');
           sound.play();
         }
       };
       xhr.send();
-    }
-  }, 5000)
+  }, 8000)
 }
 
 function playSound(src) {
@@ -94,7 +94,11 @@ for (var i = 0; i < setterBtns.length; i++) {
               break;
             case 'reset':
               sound.pause();
-              pauseTimer();
+              clearInterval(intervalTimer);
+              isStarted = false;
+              isPaused = false;
+              pauseBtn.classList.remove('pause');
+              pauseBtn.classList.add('play');
               wholeTime = 5*60;
               timeLeft = wholeTime;
               update(wholeTime,wholeTime);
@@ -130,12 +134,13 @@ function timer (seconds){ //counts time, takes seconds
     displayTimeLeft(timeLeft);
   }, 1000);
 }
+
 function pauseTimer(event){
   if(isStarted === false){
     timer(wholeTime);
     isStarted = true;
-    pauseBtn.classList.remove('pause');
-    pauseBtn.classList.add('play');
+    pauseBtn.classList.remove('play');
+    pauseBtn.classList.add('pause');
 
   }else if(isPaused){
     pauseBtn.classList.remove('play');
@@ -144,8 +149,8 @@ function pauseTimer(event){
     sound.pause();
     isPaused = isPaused ? false : true
   }else{
-    pauseBtn.classList.remove('pause');
-    pauseBtn.classList.add('play');
+    pauseBtn.classList.remove(pauseBtn.classList.value);
+    pauseBtn.classList.add(isPaused ? 'pause' : 'play');
     clearInterval(intervalTimer);
     sound.pause();
     isPaused = isPaused ? false : true ;
