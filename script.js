@@ -21,7 +21,7 @@ let intervalTimer;
 let alarmTimer;
 let timeLeft;
 let remainTime;
-let wholeTime = 1 * 10; // manage this to set the whole time 
+let wholeTime = 5 * 60; // manage this to set the whole time 
 let isPaused = false;
 let isStarted = false;
 let sound = {};
