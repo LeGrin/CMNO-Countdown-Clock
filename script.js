@@ -36,7 +36,7 @@ function initAlarm() {
     
       var xhr = new XMLHttpRequest();
       xhr.open("GET", 'https://68.183.76.12/countdown/pong', true);
-      xhr.setRequestHeader('Cache-Control', 'no-cache');
+      xhr.setRequestHeader('Pragma', 'no-cache');
       xhr.onload = function() {
         if (xhr.status && xhr.response == 'true' && isStarted && !isPaused) {
           playSound('alarm.wav');
