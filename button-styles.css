@@ -30,15 +30,6 @@ button:focus { outline: none; }
 	background-color:#bc3315;
 }
 
-.text {
-  margin: 0 auto 3rem;
-  display: block;
-  text-align: center;
-  font-size: 25px;
-	font-weight: 400;
-	font-family: inherit;
-}
-
 .container {
 	width: 100%;
 	display: flex;
@@ -47,14 +38,10 @@ button:focus { outline: none; }
 
 @media screen and (min-width: 550px) {
 	.container { padding: 0 1rem; }
-	.myButton { max-width: 550px; }
 }
 
 @media screen and (min-width: 768px) {
 	.container {
 		margin: 0 auto;
-		max-width: 720px;
 	}
-
-	.myButton { max-width: 550px; }
 }
