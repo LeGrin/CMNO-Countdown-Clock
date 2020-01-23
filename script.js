@@ -35,7 +35,7 @@ function initAlarm() {
   alarmTimer = setInterval(function() {
     if (isStarted) {
       var xhr = new XMLHttpRequest();
-      xhr.open("GET", 'http://68.183.76.12/countdown/pong', true);
+      xhr.open("GET", 'https://68.183.76.12/countdown/pong', true);
       xhr.onload = function() {
         if (xhr.status && xhr.response == 'true') {
           playSound('alarm.wav');
