@@ -38,7 +38,7 @@ function initAlarm() {
       xhr.open("GET", 'http://68.183.76.12/countdown/pong', true);
       xhr.onload = function() {
         if (xhr.status && xhr.response == 'true') {
-          playSound('timesup.wav');
+          playSound('alarm.wav');
           sound.play();
         }
       };
